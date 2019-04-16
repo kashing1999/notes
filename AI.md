@@ -414,3 +414,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 ### Effective Branching Factor
 - Effective branching factor is the average number of branches expanded
 - Lower branching factor is usually associated with a better heursitc
+
+---
+
+# Game Playing and Coevolution
