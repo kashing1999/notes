@@ -1,3 +1,12 @@
+# What's Complete
+- [x] Introduction
+- [x] Problem Formulation
+- [x] Blind Search
+- [x] Heuristic Search
+- [ ] Game Playing
+- [ ] Neural Networks
+- [ ] Machine Learning
+
 # Introduction
 
 ## What is AI
@@ -355,7 +364,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 |Evaluation|BFS    |UCS    |DFS    |DLS    |IDS    |
 |:---------|:------|:------|:------|:------|:------|
 |Time      |b^d    |b^d    |b^m    |b^l    |b^d    |
-|Space     |b^d    |b^d    |b*m    |b*l    |b*d    |
+|Space     |b^d    |b^d    |b\*m   |b\*l   |b\*d   |
 |Optimal   |Yes    |Yes    |No     |No     |Yes    |
 |Complete  |Yes    |Yes    |No     |if L>=D|b^d    |
 - b = Branching factor
@@ -418,3 +427,42 @@ function GraphSearch(problem, fringe) returns a solution or failure
 ---
 
 # Game Playing and Coevolution
+- The study of games, like AI is wide
+- They range from games of entertainment to modelling systems involving strategic decision making
+
+## Categorization of games through actions (moves)
+1. Two players (Chess) vs Multi-players(Poker)
+2. Deterministic (Chess) vs Non-deterministic (Poker), i.e., element of chance affecting actions
+3. Perfect Informaton (Chess) vs Imperfect Information (Poker), i.e., whether there is knowledge of actions by opponent
+4. Zero-Sum (Chess) vs Nonzero-sum (Prisoner's Dilemma), i.e., gain of one player is balanced by the lost of another player
+
+## Coevolutionary systems
+- Broadly, *coevolutionary systems* are systems with agents whose behaviour changes in response to their interaction outcomes
+- USed to model real-world strategic decision-making systems
+
+### Intelligent Strategic Decision-Making
+- Problem solving tasks may involve some forms of decision-making processes
+- For example: Given some inputs (chess board states), provide the appropriate outputs (legal moves)
+- One is interested with an intelligent solution for strategic decision-making (game strategy) that can:
+  1. Predict future outcomes (opponent's most likely moves)
+  2. Take appropritate decisions given certain goals
+  3. Adapt its behaviour to meet goals over a range of environments
+
+## Game Solutions 1
+- A standard **minimax** approach, which is a recursive search algorithm on the game-tree of board states from alternating moves between player and opponent
+- Board state **evaluation functions** are hand-crafted with a deep-ply search for mid-games plus opening and end game databases
+- In two-player sequential games, a ply is one turn taken by one of the players
+- Most board games are considered solved, for example Othello, chess and Go
+
+## Game Solutions 2
+- An alternative **evolutionary** approach
+- More complex/involved evaluation functions
+- Much shallower game-tree search (if any)
+- Board sate evaluation functions (game strategies) have to be **discovered** (learned)
+
+## Coevolutionary Learning
+- Probelm solving becomes a search for the best strategy, **optimizing** representation parameters such as neural connections
+- This optimization process is reformulated as a learning task
+- Coevolutionary learning provides a framework based on natural processes of:
+  1. Variation to generate new solutions
+  2. Selection to test solutions
