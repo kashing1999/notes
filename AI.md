@@ -466,3 +466,169 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - Coevolutionary learning provides a framework based on natural processes of:
   1. Variation to generate new solutions
   2. Selection to test solutions
+
+## Coevolutionary Learning Framework
+- A typical coevolutionary system involves a generate-and-test behaviour
+  1. Initialize population, `X(t=1)`
+  2. Evaluate fitness through interactions (game-plays) between population members (agents)
+  3. Select parents from `X(t)` based on fitness
+  4. Generate offspring from parents to obtain X(t+1)
+  5. Repeat steps 2 to 4 until a termination criteria is met
+  6. Note: The iteration count t is termed generation and X is the population
+
+## Coevolutionary Algorithm
+```
+function CEA(X, tstop)
+    generation = 0
+    Initialize population in X
+    
+    while generation <= tstop:
+        Game plays for X
+        Compute scores for the population X
+        Sort X according to decreasing score sequence
+        Select next generation's parent population
+        Generate next generation's offspring population
+```
+
+## Coevolutionary Computation and Applications
+- Application as a general form of generate-and-test search methodology:
+  1. Population-based, randomly determined search algorithms where adaptation is the central process of the search mechanism
+  2. Search problems in the context of optimization, learning and others
+- Another application is where coevolutionary computation is used for simulation and modeling purposes
+
+## Real-world problems: Constrains of Resources
+- The tragedy of the Commons:
+  1. Consider an open pasture free for all farmers
+  2. A rational farmer would maximize his personal gain, for example add more cows for grazing
+  3. The tragedy is that if every farmer seeks to maximize his gain, they would collectively destroy the pasture due to overgrazing
+### Solution?
+- Axelrod and many others earlier studied through simulation and modeling of **Prisoner's Dilemma** to understand the conditions that allow mutual cooperation to occur within a group of selfish individuals
+- It is an elegant embodiment of the tension between rationality (reflected in the incenvtive of both sides to be selfish) and group rationality (reflected in the higher payoff to both sides for mutual cooperation)
+
+## Why use coevolution to Simulate and Model
+- Coevolutionary computation framework emphasizes the learning of behaviours through adaptation based on strategic interactions between competitors
+- It simulates the specific conditions that lead to the learning outcomes of certain behaviours
+- As an example, it has been shown that cooperative behaviours can be learned, i.e. the mechanism of **direct reciprocity** (meaning mutual exchange for benifit) modeled as repeated encounters encourages the learning of coopeartive behaviours through coevolution of IPD strategies
+
+## Understanding Complex, Real-World Interactions
+- However, complex real-world interactions rarely involve just two simple choices
+- How about having more choices with intermediate cooperation levels where strategies can subtly exploit opponents?
+- With coevolutionary learning, the model can be extended to similate interactions involving more choices
+
+<br>![IPD with multiple choices](images/IPD_4_choices.png)<br>
+
+## Coevolutionary Learning of Complex IPD
+- Consider a large class of **deterministic** and **reactive** IPD strategies (for a wide range of complex behaviours at a level of abstraction we can analyze)
+- We use neural networks for strategy representation (for its scalability)
+- Coevolutionary learning model:
+  1. Initialize N/2 strategies
+  2. Generate N/2 offspring from N/2 parents to obtain population
+  3. Each strategy's fitness is assigned as the average payoffs of IPD games
+  4. Select N/2 parents based on fitness values for next generation
+  5. Repeat steps 1-4 for a number of generations
+
+## More Choices lead to Defection Outcomes
+- Literature has shown co-evolving cooperative strategies is difficult and requires certain conditions to be met:
+  1. Minimum complexity in representation (e.g. neural networks)
+  2. Behavioral diversity is needed, not genetic diversity
+  3. Behavioral diversity is dependant on representation
+
+## Why more Choices lead to Defection
+- With coevolutionary learning, strategies learn behaviours through an adaptation process, which depends on the average payoff
+- With more choices, it becomes difficult to resolve the intention of an intermediate play, i.e. is it a subtle **exploitation** or a signal to continue **cooperating**
+- More incentives to adapt behaviours to exploit partners (for example playing lower cooperation levels to obtain higher average payoffs) when strategies cannot resolve the intention of opponents in the short-term
+
+## One Fundamental Research Question
+- Suppose I have a coevolutionary algorithm to learn game strategies, how do I know how well the co-evolved strategy performs against **new** and **unseen** opponents?
+- Suppose I have a coevolutionary model to simulate an interaction, what can I say about the outcome of strategic behaviours, i.e. what behaviours are the most **robust**?
+
+## A need for a Theoretical Framework
+- For many difficult problems, we only have test cases as means to measure performance (opponents in games) of solutions
+- Early attempts used empirical estimates with random samples of test cases
+- Strong motivation for a theoretical framework:
+  1. to establish the notion of performance and
+  2. perform *rigorous quantitative analysis* in coevolutionary computation
+
+## Generalization Performance
+- Consider a game and a set S of M pure strategies `S = {1,2,3,...,M}`
+- The game outcome of strategy i against j is given by `Gi(j)`
+- Different definitions of `Gi(j)` indicate different quality measures
+- One typical example is **win-lose**:
+  ```
+  Gw(i,j) = {
+      Gmax for g(i,j) > g(j,i), 
+      Gmin otherwise
+  }
+  ```
+  where `Gmax` > Gmin, `and` `g(i,j)` is the payoff to i in a game against j 
+- (Note: This just basically describing a game where you can only either win or lose)
+- Selection of individual test strategies represented by a random variable J taking on values j (which is an element of set S) with probability `Ps(j)`
+- True generalization performance of strategy i, `Gi`:
+  <br>![tgp](images/true_generalization_performance.png)<br>
+  where `Gi` is the mean of the random variable `Gi(j)`
+
+## Estimated Generalization Performance
+- In practice, we **estimate** the generalization performance `Gi` through a random sample `Sn` of `n` test strategies which are drawn independently and identically distributed from `S` with probability `Ps`
+  <br>![egp](images/estimated_generalization_performance.png)<br>
+  Notes:
+  1. We are unable or cannot calculate `Gi`
+  2. We also cannot calculate the error `|Ĝi - Gi|`
+
+## How accurate is the Estimate?
+- We make a **statistical claim** as to the **confidence (probability)** with the accuracy (**precision**) of the estimate for a sample size N using **Chebyshev's bounds**
+- From Chebychev's Theorem, we obtain
+  <br>![chebyshevs theorem](images/chebyshevs_theorem.png)<br>
+  for any positive ε > 0
+- Since random variable `Gi(J)` varies within finite interval [`Gmin`, `Gmax`] of size R, its variance is upperbounded by `(σ^2)max = R^2/4`
+
+## Chebychev's Theorem (Chebychev's Inequality)
+- In probability theory, Chebyshev's inequality guarantees that for a wide class of probability distributions, no more than a certain fraction of values can be more than a certain distance from the mean
+- Specifically, no more than 1/k^2 of the distribution's values can be more than k standard deviations away from the mean (or equivalently, at least 1 − 1/k^2 of the distribution's values are within k standard deviations of the mean)
+- The inequality has great utility because it can be applied to any probability distribution in which the mean and variance are defined
+
+## Chebychev's Bound
+- Chebyshev’s bounds can be restated into another more useful form
+- Let `IDn| = |Ĝi − Gi|`, `IDn|′= IDn|/R`, `ε′= ε/R` Then:
+  <br>![chebyshevs bound](images/chebyshevs_bound.png)<br>
+  Note: The analysis can be extended to games with probabilistic strategies as well since `D(N)` is a random variable
+
+## How useful is the Framework?
+- Chebyshev's bounds are:
+  1. Independent of the complexity of the game (only sample size N matters)
+  2. Independent of the learning algorithms (distribution-free, e.g. can be used to estimate the performance for any strategy in any game)
+
+## Estimations Stable in terms of Varying `Sn` Sizes
+- Empirical results for 50 strategies i:
+  <br>![estimation](images/estimation_by_N.png)<br>
+- There is a trade-off (around N = 2000) between improving estimates and computational cost is roughly the same for most of the strategies
+### Why estimation stable?
+1. Game outcome is a random variable `Gi(J)` with finite mean and variance.
+2. `Sn` is drawn independently and identically distributed to compute generalization estimates `Ĝ(Sn)` (that takes the sum `Gi(1)`+···+`Gi(N)`).
+iNii
+3. `Ĝi(Sn)` is realization of a random variable
+4. By Central Limit Theorem, `Ĝi(Sn)` is Gaussian-distributed for large enough N
+
+## Generalization Performance in Coevolutionary Learning
+1. Generation step, t = 1: Initialize POPSIZE/2 parent strategies, `Pi` , i = 1, 2, ..., POPSIZE/2, randomly
+2. Generate POPSIZE/2 offspring, `Oi` , i = 1, 2, ..., POPSIZE/2, from POPSIZE/2 parents using a variation
+3. All pairs of strategies compete, including the pair where a strategy plays itself (i.e., round-robin tournament)
+4. For POPSIZE strategies in a population, every strategy competes a total of POPSIZE games
+5. Select the best POPSIZE/2 strategies based on total payoffs of all games played. Increment generation step, t = t + 1
+6. Step 2 to 4 are repeated until termination criterion (i.e., afixed number of generation) is met
+
+## Strategy Representation
+|   |+1 |-1 |
+|:--|:--|:--|
+| +1|m11|m12|
+| -1|m21|m22|
+- The direct look-up table representation provides one-to-one mapping (strategy representation and behavior) for deterministic and reactive memory-one PD strategies
+- `Mfm` used to represent the first move directly when there is no prior history played yet
+
+## TLDR
+- We have to:
+  1. Have an appropriate number of games, `N`
+  2. Have a proper game setup, i.e. proper number of choices
+  3. Provide proper learning algorithms
+- to get a proper coevolutionary learning framework
+
+---
