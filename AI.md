@@ -3,9 +3,10 @@
 - [x] Problem Formulation
 - [x] Blind Search
 - [x] Heuristic Search
-- [ ] Game Playing
-- [ ] Neural Networks
+- [x] Game Playing
+- [x] Neural Networks
 - [ ] Machine Learning
+- [ ] Probabilistic Reasoning
 
 # Introduction
 
@@ -628,7 +629,95 @@ iNii
 - We have to:
   1. Have an appropriate number of games, `N`
   2. Have a proper game setup, i.e. proper number of choices
-  3. Provide proper learning algorithms
 - to get a proper coevolutionary learning framework
+
+---
+
+# Neural Networks
+
+## What is a neural network
+- An interconnected assembly of simple processing elements, **units** or **nodes**, whose functionality is loosely based on the **animal neuron**
+- The processing ability of the network is stored in inter-unit connection strengths, or **weights**
+- These weights are obtained by a process of adaptation to, or learning from, a set of training patterns
+
+## Biological Neural Networks
+- We are born with about 100 billion neurons
+- A neuron may connect to as many as 100 thousand other neurons
+- Signals "**move**" via complex electrochemical reactions
+- The synapses release a chemical transmitter, in which the sum can cause a threshold to be reached, causing the neuron to "**fire**"
+
+## Modeling a Neuron
+![neuron](images/neuron_model.png)
+
+## Activation Functions
+![activation_function](images/activation_function.png)
+
+## Perceptron
+- In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers
+- A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class
+- A single weight only affects one output
+- Thus, we can restrict our investigations for each perceptron
+### What can Perceptrons Represent
+- Only functions which are linearly seperable can by represented by a perceptron
+- The dimensionality of function space is equal to the number of inputs, which wil;l typically be higher than 2!
+- Seperation in this case is by a hyperplane of (dimensionality-1)
+#### Linear Seperability
+- Linear separability is a property of two sets of points
+- This is most easily visualized in two dimensions by thinking of one set of points as being colored blue and the other set of points as being colored red
+- These two sets are linearly separable if there exists at least one line in the plane with all of the blue points on one side of the line and all the red points on the other side
+- Linear Separability is also possible in more than 3 dimensions, but it is harder to visualise
+#### Hyperplane
+- In geometry, a hyperplane is a subspace whose dimension is one less than that of its ambient space
+- If a space is 3-dimensional then its hyperplanes are the 2-dimensional planes, while if the space is 2-dimensional, its hyperplanes are the 1-dimensional lines
+- In machine learning, hyperplanes are a key tool to create support vector machines for such tasks as computer vision and natural language processing
+
+## Learning
+```
+While epoch produces an error
+    Present network with next inputs from epoch
+    Err = T-O
+    If |Err| > 0 Then
+        Wj = Wj + LR * Ij * Err
+```
+### Epoch
+- Presentation of the entire training set to the neural network
+- In the case of an AND function an epoch consists of four sets of inputs i.e. [0,0], [0,1], [1,0], [1,1]
+### Training Value, T
+- When we are training a network we not only present it with the input but also with a value that we require the network to produce
+- For example, if we present the network with [1,1] for the AND function the training value will be 1
+#### Output from Neuron, O
+- The output value from the neuron
+#### `Ij`
+- Inputs being presented to the neuron
+#### `Wj`
+- Weight from input neuron `Ij` to the output neuron
+#### `LR`
+- The learning rate
+- It dictates how quickly the network converges
+- Set by a matter of experimentation
+- Typically 0.1
+#### `Err`
+- Amount by which the value output by the network differs from the training value
+- For example, if we required the network to output 0 and it output 1 instead, then Err = -1
+
+### Example of a Peceptron
+- A perceptron with two inputs, is to learn the AND function below:
+  |X1   |X2   |T    |
+  |:----|:----|:----|
+  |0    |0    |0    |
+  |1    |0    |0    |
+  |1    |1    |1    |
+- Let `a = 0.25` be the learning rate, initial weights and threshold be 0, 0.4 and 0.3 respectively, T the training output and O the actual output, the weights and threshold should be adjusted as below:<br>
+`δwi = a(T-O)Ii ; δθ = - a(T-O)` <br>
+ where `Ii` is the input and is always equal to -1 for the threshold
+
+## Building a Neural Network
+- There are many forms of neural networks 
+- Most operate by passing neural 'activations' through a network of connected neurons
+- The select structure designs the way that neurons are interconnected
+- Three main classes of network architectures
+  1. Single-layer feed-forward (acyclic)
+  2. Multi-layer feed-forward (acyclic)
+  3. Recurrent
 
 ---
