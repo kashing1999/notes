@@ -5,7 +5,7 @@
 - [x] Heuristic Search
 - [x] Game Playing
 - [x] Neural Networks
-- [ ] Machine Learning
+- [x] Machine Learning
 - [ ] Probabilistic Reasoning
 
 # Introduction
@@ -38,7 +38,7 @@
 - Need to be smart on how to solve these problems
 
 ## Big O notation `O(f(n))`
-- n is a meaure of problem size or runtime
+- n is a measure of problem size or runtime
 - f(n) is the upper bound of the asymptotic behaviour
 
 ---
@@ -75,7 +75,7 @@
 <br>![Romania](./images/Romania.png)<br>
 
 ## State Space Representation
-- We can use graphcs to model the deeper structure of a problem
+- We can use graphics to model the deeper structure of a problem
 - A graph consits of V nodes and E edges
 - Nodes
   1. Have unique label for identification
@@ -520,6 +520,7 @@ function CEA(X, tstop)
 
 ## Coevolutionary Learning of Complex IPD
 - Consider a large class of **deterministic** and **reactive** IPD strategies (for a wide range of complex behaviours at a level of abstraction we can analyze)
+- Reactive means behavior of making a quick decision, in lower quality
 - We use neural networks for strategy representation (for its scalability)
 - Coevolutionary learning model:
   1. Initialize N/2 strategies
@@ -719,5 +720,195 @@ While epoch produces an error
   1. Single-layer feed-forward (acyclic)
   2. Multi-layer feed-forward (acyclic)
   3. Recurrent
+
+---
+
+# Machine Learning
+
+## What is Machine Learning?
+- A computer program is said to learn from experience `E` with respect to some class of tasks `T` and performance measure `P` if its performance at tasks in `T`, as measured by `P`, improves with experience `E`
+- The world is driven by data:
+  1. Google processes 24 petabytes per day
+  2. Data in 2013 > all data in history
+  3. Powerful, cheaper computers and cloud storage make data accessible
+- Many applications are hard to program directly but most are "pattern recognition" tasks (e.g. targeted advertising, reading handwritting)
+- Machine learning colelct lots of "training data" (examples) that specify the correct output for a given set of inputs
+- A machine learning algorithm then takes these examples and produces a program that does the job (learning from examples)
+
+## Machine Learning vs Traditional Programming
+- In traditional programming, a computer takes in a data and uses a program to generate an output
+- In machine learning, a computer takes in data and outputs to generate a program
+
+## Machine Learning Problems
+- Amount of knowledge might be too large for explicit encoding by humans
+- Human expertise may be scrace or costly
+- Black box human expertise that cannot be explained, and functional relationships cannot be expressed mathematically
+- Rapidly changing phenomena
+- Need for customisation/personalisation
+- Often only data from measurements are available
+
+## How Machine Learning Works
+### Training
+- Given a *training set* of labeled examples {`(x1, y1)`, ..., `(xn, yn)`}, the function f is estimated by minimising the prediction error on the training set
+- Training set may be noisy, e.g. `(x, (f(x) + ε))`
+### Testing
+- Apply f to a never seen before test example x and output the predicted value `y = f(x)`
+
+## Machine Learning Tasks
+### Supervised
+- Given input samples (`x`) and labeled outputs (`y`) of a function `y = f(x)`, "learn" `f` and evaluate it on new data
+  1. Classification: `y` is discrete (class labels). Learn a decision boundary that seperates one class from another
+  2. Regression: `y` is continuous, e.g. linear regression. Learning a continuous input-output mapping, also known as "curve fitting" and "function approximation"
+- Examples:
+  1. Is this image a cat, dog, car or house?
+  2. How would this user score that restaurant?
+  3. What will be the sales, stock price next year?
+### Unsupervised
+- Gives only samples `x` of the data, infers a function `f` such that `y = f(x)` descirbes the hidden structure of the unlabeled data
+- More of an exploratory/descriptive data analysis
+  1. Clustering: `y` is discrete. Learn any intrinsic structure that is present in the data
+  2. Dimensional Reduction: `y` is continuous. Discover a lower-dimensional surface on which the data lives
+- Examples:
+  1. Cluster some hand-written digit data into 10 classes
+  2. What are the top 20 topics in Twitter right now?
+  3. Discover interesting relations between variables in large databases
+### Supervised vs Unsupervised Learning
+|Supervised                                           |Unsupervised             |
+|:----------------------------------------------------|:------------------------|
+|`y = F(x)`: function                                 |`y = ?`: no function     |
+|`D`: labeled training set                            |`D`: unlabeled dataset   |
+|`Learn`: model trained to predict labels of new cases|`Learn`: ?              |
+|`Goal`: `E[(F(x)- G(x))^2] = 0`                      |`Goal`: ?                |
+
+## Classification
+- Learn a method for predicting the isntance class from pre-labeled (classified) instances
+- Many approaches:
+  1. Nearest Neighbour
+  2. Regression
+  3. Decision Trees
+  4. Bayesian
+  5. Neural Networks
+
+### Nearest Neightbour
+![Nearest Neighbour](./images/nearest_neighbour.png)
+- The test sample `x` will be classified as belonging to the same class as `f(x1)`, i.e. label of the training example nearest to x
+- All we need is a distance function for the input
+- No training required
+- Also known as instance-based learning
+
+### k-Nearest Neighbour
+![k Nearest Neighbours](./images/knn.png)
+- The data is the model
+  1. No training needed
+  2. Accuracy generally improves with more data
+  3. Matching is simple and fast (and single pass)
+  4. Usually needs data in memory, but can be run off disk
+- Minimal configuration, only parameter is k (number of neighbours)
+- Two other choices are important:
+  1. weighting of neighbours (e.g. inverse distance)
+  2. similarity metric 
+
+### Regression
+- To find the best line (linear function `y = f(x)`) to explain the data
+- Assuming a linear or nonlinear model of dependency
+- Used for:
+  1. predict sales of new products based on advertising expenditure
+  2. time series prediction of stock market indices
+  3. estimated weight based on BMI
+- Not flexible enough
+
+### Decision Trees
+![Decision Trees](./images/decision_trees.png)
+```
+if X > 5 then blue
+else if Y > 3 then blue
+else if X > 2 then green
+else blue
+```
+- A decision tree is a flowchart-like structure in which each internal node represents a "test" on an attribute (e.g. whether a coin flip comes up heads or tails)
+- Each branch represents the outcome of the test
+- Each leaf node represents a class label (decision taken after computing all attributes)
+- The paths from root to leaf represent classification rules
+
+|Pros                                 |Cons                                  |
+|:------------------------------------|:-------------------------------------|
+|Reasonable training time             |Simple decision boundaries            |
+|Can handle large number of attributes|Problems with lots of missing data    |
+|Easy to omplement                    |Can't handle complicated relationships|
+|Easy to interpret                    |                                      |
+
+### Neural Networks
+![Neural Networks](./images/neural_networks.png)
+- Useful for learning complex data like speech, image and handwriting recognition
+- Regression: use of linear or any other polynomial
+- Decision Trees: divide decision space into piecewise regions
+- Neural Networks: partition by nonlinear boundaries
+
+|Pros                                       |Cons                                                                            |
+|:------------------------------------------|:-------------------------------------------------------------------------------|
+|Can learn more complicated class boundaries|Hard to implement: Trial and error for choosing parameters and network structure|
+|Can be more accurate                       |Slow training time                                                              |
+|Can handle large number of features        |Can over-fit the data: find patterns in random noise                            |
+|                                           |Hard to interpret                                                               |
+
+## Applications of classification
+- Banking: predict good customers based on old customers
+- Fraud detection: use historical data to build models of fradulent behaviour and use data mining to help identify similar instances
+- Customer relationship management (CRM)
+
+## Clustering
+- What we have
+  1. a set of unlabeled data points, each with a set of attributes
+  2. a similarity measure
+- What we need to do
+  1. Find "natural partitioning of data, or groups of similar/close items
+- Key: measure of similarity between instances
+  1. Euclidean or Manhattan distance
+  2. Hamming distance
+  3. Other problem specific measures
+
+## Generalisation
+- How well does a learned model generalise from the data it was trained on to a new test set?
+- Components of generalisation error
+  1. Inherent: meaning unavoidable
+  2. Bias: How much is the average model over all training data
+  3. Variance: How much models estimated from different training sets differ from each other
+#### Underfitting
+- Model is too "simple" to represent all the relevant class characteristics
+- High bias and low variance
+- High training error and high test error
+#### Overfitting
+- Model is too "complex" and fits irrelevant characteristics (noise) in the data
+- Low bias and high variance
+- Low training error and high test error
+
+## Bias-Variance Trade-off
+- Models with too few parameters are inaccurate because of a large bias (not enough flexibility)
+- Models with too many parameters are innacurate because of a large variance (too much sensitivity to the sample)
+
+## How Overfitting affects Prediction
+![overfitting](./images/overfitting.png)
+
+## The Holdout Method
+- Randomly split examples into training set `U` and test set `V`
+- Use training set `H` to learn a hypothesis `H`
+- Measure % of `V` correctly classified by `H`
+- The hold-out method splits the data into training data and test data
+- Repeated holdout method repeats the process with different subsamples
+  1. In each iteration, a certain proportion is randomly selected for training
+  2. The error rates on the different iterations are averaged to yield an overall error rate
+
+## The v-fold Cross-Validation Method
+- Randomly partition our full dataset into **v disjoint subsets** (each roughly of size n/v, n = total number of training data points)
+```
+// v = 10
+for i in range(10)
+    train on 90% of data,
+    Acc(i) = accuracy on other 10%
+```
+- Cross-Validation-Accuracy = `1/v * (sum of all Acc(i))`
+- Choose the method with the highest cross-validation accuracy
+- Common values for v are 5 and 10
+- Can also do "leave-one-out" where v = n
 
 ---
