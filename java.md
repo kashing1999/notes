@@ -235,7 +235,7 @@ public abstract void eat();
 - Interfaces are like contracts
 - Interfaces cannot be instantiated
 - Interface methods must be declared public when implemented
-- Interface methods cannot be overloaded
+- Interface methods can be overloaded, but should not be
 - Classes can implement multiple interfaces
 - Classes from different inheritance trees can implement the same interface
 - To implement an interface:
@@ -273,6 +273,130 @@ class Dog extends Animal implements IndoorPet {
 }
 ```
 - An interface can extend many other interfaces
+
+---
+
+## Strings
+- Strings are basically objects that represent sequence of char values
+- An array of characters works the same as Java String
+- For example:
+
+``` Java
+char[] ch = {'h', 'e', 'l', 'l', 'o'};
+String s = new String(ch);
+// is same as:
+String s = "welcome";
+```
+### CharSequence Interface
+- The `CharSequence` interface is used to represent the sequence of characters
+- `String`, `StringBuffer` and `StringBuilder` classes implement it
+- It means we can create strings in java by using these three classes
+- The Java `String` is immutable which means it cannot be changed
+- Whenever we change any string, a new instance is created
+- To create mutable strings, you can use `StringBuffer` and `StringBuilder` classes
+
+### String Literal
+- Java String literal is created by using double quotes: `String s = "welcome";`
+- Each time you create a string literal, the JVM checks the "string constant pool" first
+- If the string already exists in the pool, a reference to the pooled instance is returned
+- If the string does not exist in the pool, a new string instance is created and placed in the pool
+- For example:
+``` Java
+String s1 = "welcome";
+String s2 = "welcome"; // does not create new instance
+```
+
+### Java String Compare
+- Three main ways:
+  1. `equals()` method
+  2. `==` operator
+  3. `compareTo()` method
+#### `equals()` method
+- The `String equals() method compares the original content of the string
+``` Java
+String s1="Sachin";
+String s2="Sachin";
+String s3=new String("Sachin");
+String s4="Saurav";
+System.out.println(s1.equals(s2)); // True
+System.out.println(s1.equals(s3)); // True
+System.out.println(s1.equals(s4)); // False
+
+```
+#### `==` operator
+- Compares references, not values
+#### `compareTo()` function
+- The String compareTo() method compares values lexicographically and returns an integer value that describes if first string is less than, equal to or greater than second string
+- Similar to `strcmp` in `C`
+``` Java
+String s1 = "Sachin";
+String s2 = "Sachin";
+String s3 = "Ratan";
+System.out.println(s1.compareTo(s2)); // 0
+System.out.println(s1.compareTo(s3)); // 1
+System.out.println(s3.compareTo(s1)); // -1
+```
+## String Concatenation
+- Two ways:
+  1. Using `+`
+  2. Using `concat()` method
+``` Java
+String s1 = "Sachin";
+String s2 = " Tendulkar";
+String s3 = s1 + s2;
+String s4 = s1.concat(s2);
+```
+
+## Substrings
+- A part of string is called substring
+- Subset of another string
+``` Java
+String s = "SachinTendulkar";
+System.out.println(s.substring(6)); // output is: Tendulkar 
+System.out.println(s.substring(0,6)); // output is: Sachin
+```
+
+## `valueOf()` method
+- The string valueOf() method coverts given type such as int, long, float, double, boolean, char and char array into string
+``` Java
+int a = 10;
+System.out.println(String.valueOf(a)); // 10
+```
+
+## String `replace()`
+- The string `replace()` method replaces all occurrence of first sequence of character with second sequence of character
+``` Java
+String s1 = "Java is a programming language";
+String replaceString = s1.replace("Java", "Kava");
+```
+
+## `StringBuffer` class
+- Java `StringBuffer` class is used to create mutable strings
+- Thread-safe, meaning multiple threads cannot access it simultaneously
+``` Java
+StringBuffer sb = new StringBuffer("Hello ");
+sb.append("Java"); //now original string is changed
+System.out.println(sb); //prints Hello Java
+
+sb = new StringBuffer("Hello ");
+sb.insert(1,"Java"); //now original string is changed
+System.out.println(sb); //prints HJavaello
+
+sb = new StringBuffer("Hello");
+sb.replace(1,3,"Java");
+System.out.println(sb); //prints HJavalo
+```
+
+## `StringBuilder` class
+- Java StringBuilder class is used to create mutable (modifiable) string
+- The Java StringBuilder class is same as StringBuffer class except that it is non- synchronized
+- It is available since JDK 1.5
+- It allows multi-threading, a technique by which a single set of code can be used by several processors at different stages of execution
+### Comparison between StringBuffer and StringBuilder
+- Each method in StringBuffer is synchronized, it does not allow two threads to simultaneously access the same method
+- Each method can be accessed by one thread at a time
+- Thus, StringBuilder is faster than the StringBuffer when calling the same methods of each class
+- However, StringBuilder is not thread safe
 
 ---
 

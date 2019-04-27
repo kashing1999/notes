@@ -912,3 +912,71 @@ for i in range(10)
 - Can also do "leave-one-out" where v = n
 
 ---
+
+# Probabilistic Reasoning
+
+## Basic Concepts
+- A probability space `(S,F,P)` is a model for some real-world situations
+- `(S,F,P)` is defined by:
+  1. space `S`: the set of all possible outcome
+  2. σ-algrebra `F`: the set of all events `A` (subset of `S`), e.g. power set `2^s`
+  3. probabilities `P(A)` assigned to events `A`s
+- Consider an experiment involving a single coin-flip with head (H) and tail (T)
+- S = {H, T}, F = {H, T}, P(H) = P(T) = 0.5 (assuming fair coin) 
+- Note here F ⊂ 2^s = {{}, H, T, {H, T}}
+
+## Disjoint probability
+- Two events are disjoint if they have no outcome in common
+- If two events A and B are disjoint, then the probability of either event is the sum of the probabilities of the two events: P(A ∨ B) = P(A) + P(B)
+- The chance of any (one or more) of two or more events occurring is called the union of the events
+- A single fair coin-flip’s outcome is either H or T, so P(H ∨ T) = P(H) + P(T) = 1
+
+## Probability Independence
+- If two events A and B are independent, then the probability of both events happening is the product of the probabilities for each event: P(A ∧ B) = P(A)P(B)
+
+## Bayes' Theorem
+- Product Rule: `p(X,Y) = p(Y|X)p(X)`
+- Together with the symmetry property P(X,Y) = P(Y,X), the relationship between conditional probabilities can be derived, known as Bayes' theorem
+- `p(Y|X) = P(X|Y)p(Y) / p(X)`
+- Using the sum rule, the denominator can be expressed in terms of the quantities appearing in the numerator
+- `p(X) = Σy p(X|Y)p(Y)`
+
+## Prior Probability
+- Degree of belief without any evidence
+
+## Joint Probability
+- Matrix of combined probabilities of a set of variables
+
+![Probability Examples](./images/probability_example.png)
+
+## Conditional Independence
+- Variables A and B are conditionally independent given C if any of the following hold:
+- `P(A,B|C)=P(A|C)P(B|C)` 
+- `P(A|B,C)=P(A|C)`
+- `P(B|A,C)=P(B|C)`
+- Knowing C tells me everything about B
+- I don’t gain anything by knowing A (either because A doesn’t influence B or because knowing C provides all the information knowing A would give)
+ 
+## Baye's Rule
+- Bayes’ rule is derived from the product rule:
+- `P(Y|X)=P(X|Y)P(Y)/P(X)`
+- commonly expressed as `P(H/E)` = `P(E/H)P(H) / P(E)` where
+  1. P(H/E) is the probability that hypothesis H is true given evidence E
+  2. P(E/H) is the probability that we will observe E given hypothesis H
+  3. P(H) is the a priori probability that the hypothesis H is true in the absence of any specific evidence.
+- Often useful for diagnosis
+
+
+![Bayes' Rule](./images/bayes_rule.png)
+- Red: Priori probability
+- Black: Conditional probability
+- Green: Posteriori probability
+
+## Choosing Hypotheses
+- Generally want the most probable hypothesis given the training data
+- Maximum a posteriori hypothesis Hmap:
+![Choosing Hypothesis](./images/posteriori.png)
+- P(h) = prior probability of hypothesis h
+- P(D) = prior probability of training data D 
+- P(h|D) = probability of h given D
+- P(D|h) = probability of D given h
