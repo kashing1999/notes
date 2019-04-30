@@ -439,7 +439,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 
 ## Coevolutionary systems
 - Broadly, *coevolutionary systems* are systems with agents whose behaviour changes in response to their interaction outcomes
-- USed to model real-world strategic decision-making systems
+- Used to model real-world strategic decision-making systems
 
 ### Intelligent Strategic Decision-Making
 - Problem solving tasks may involve some forms of decision-making processes
@@ -957,7 +957,7 @@ for i in range(10)
 - Knowing C tells me everything about B
 - I don’t gain anything by knowing A (either because A doesn’t influence B or because knowing C provides all the information knowing A would give)
  
-## Baye's Rule
+## Bayes' Rule
 - Bayes’ rule is derived from the product rule:
 - `P(Y|X)=P(X|Y)P(Y)/P(X)`
 - commonly expressed as `P(H/E)` = `P(E/H)P(H) / P(E)` where
