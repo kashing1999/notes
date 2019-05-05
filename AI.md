@@ -686,11 +686,11 @@ While epoch produces an error
 ```
 ### Epoch
 - Presentation of the entire training set to the neural network
-- In the case of an AND function an epoch consists of four sets of inputs i.e. [0,0], [0,1], [1,0], [1,1]
-### Training Value, T
+- In the case of an AND function an epoch consists of four sets of inputs i.e. `[0,0]`, `[0,1]`, `[1,0]` and `[1,1]`
+### Training Value, `T`
 - When we are training a network we not only present it with the input but also with a value that we require the network to produce
-- For example, if we present the network with [1,1] for the AND function the training value will be 1
-#### Output from Neuron, O
+- For example, if we present the network with `[1,1]` for the `AND` function the training value will be `1`
+#### Output from Neuron, `O`
 - The output value from the neuron
 #### `Ij`
 - Inputs being presented to the neuron
