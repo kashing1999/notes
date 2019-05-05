@@ -372,7 +372,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 |Time      |b^d    |b^d    |b^m    |b^l    |b^d    |
 |Space     |b^d    |b^d    |b\*m   |b\*l   |b\*d   |
 |Optimal   |Yes    |Yes    |No     |No     |Yes    |
-|Complete  |Yes    |Yes    |No     |if L>=D|Yes    |
+|Complete  |Yes    |Yes    |No     |if l>=d|Yes    |
 - b = Branching factor
 - d = Depth of solution
 - m = maximum depth of search tree
@@ -386,16 +386,16 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - Heuristic search works by deciding which is the next best node to expand (though it may not be the best node)
 
 ## Heuristics
-- Heuristic function `h(n)` estimates the "goodness" of a node n, specifically, h(n) = estimated cost (or distance) of minimal cost path from n to a goal state
+- Heuristic function `h(n)` estimates the "goodness" of a node n, specifically, `h(n)` = estimated cost (or distance) of minimal cost path from n to a goal state
 - All domain knowledge used in the search is encoded in `h(n)` which is computable from the current state description
-- In general, `h(n)` >= 0 for all nodes n and h(n) = 0 implies that n is a goal node
+- In general, `h(n) >= 0` for all nodes `n` and `h(n) = 0` implies that `n` is a goal node
 
 ## Best-First Search
 - Node selected for expansion based on an evaluation function `f(n)`, which incorporates heuristics in some way
 - We get different searches depending on the evaluation function`f(n)`
 
 ## Greedy Search
-- Uses an evaluation function `f(n)` = `h(n)`, sorting nodes by increasing values of f
+- Uses an evaluation function `f(n) = h(n)`, sorting nodes by increasing values of `f`
 - Selects node to expand believed to be closest, (hence "greedy") to a goal node
 
 ## Greedy Search Observations
@@ -414,13 +414,13 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - In greedy search, we kept looking at nodes closer to the goal, but we were accumulating costs as we got further from the initial state
 - Our goal is not to minimize the distance from the current head of our path to the goal, rather to minimize the overall length of the path to the goal
 - Let `g(n)` be the cost of the best path found so far between the initial node and n
-- A*: `f(n)` = `g(n)` + `h(n)` where `f(n)` is the estimated total cost of path through n to goal
+- A*: `f(n) = g(n) + h(n)` where `f(n)` is the estimated total cost of path through n to goal
 - Best-known form of best-first search
 - Idea is to avoid expanding paths that are already expensive
 - It is optimal and complete provided `h(n)` is admissible, i.e. `h(n)` never overestimates the cost to reach the goal
 
 ### Informedness
-- For two A* heuristics, `h1` and `h2`, if `h1(n)` <= `h2(n)`, for all states n in the search space, we say `h2` is more informed than `h1`, or `h2` dominates `h1`
+- For two A* heuristics, `h1` and `h2`, if `h1(n) <= h2(n)`, for all states n in the search space, we say `h2` is more informed than `h1`, or `h2` dominates `h1`
 - Domination equals efficiency, meaning h2 will never expand more nodes than h1
 - Hence always use h2 provided it does not over-estimate and computation time is not too large
 ### Generating Heuristics with Relaxed Problems
