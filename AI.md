@@ -17,7 +17,7 @@
 1. Planning
 2. Vision
 3. Robotics
-4. National Language
+4. Natural Language
 
 ---
 
@@ -329,7 +329,7 @@ function TreeSearch(problem, fringe) returns a solution or failure
 
 function Expand(previousNode, problem) returns a set of nodes
     successor = the empty set
-    for <action, result> in SuccessorFn[probelm](State[previousNode])
+    for <action, result> in SuccessorFn[problem](State[previousNode])
         newNode = a new Node
         State[newNode] = result
         ParentNode[newNode] = previousNode
@@ -467,7 +467,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - Board sate evaluation functions (game strategies) have to be **discovered** (learned)
 
 ## Coevolutionary Learning
-- Probelm solving becomes a search for the best strategy, **optimizing** representation parameters such as neural connections
+- Problem solving becomes a search for the best strategy, **optimizing** representation parameters such as neural connections
 - This optimization process is reformulated as a learning task
 - Coevolutionary learning provides a framework based on natural processes of:
   1. Variation to generate new solutions
@@ -478,9 +478,9 @@ function GraphSearch(problem, fringe) returns a solution or failure
   1. Initialize population, `X(t=1)`
   2. Evaluate fitness through interactions (game-plays) between population members (agents)
   3. Select parents from `X(t)` based on fitness
-  4. Generate offspring from parents to obtain X(t+1)
+  4. Generate offspring from parents to obtain `X(t+1)`
   5. Repeat steps 2 to 4 until a termination criteria is met
-  6. Note: The iteration count t is termed generation and X is the population
+  6. Note: The iteration count `t` is termed generation and `X` is the population
 
 ## Coevolutionary Algorithm
 ```
@@ -567,12 +567,12 @@ function CEA(X, tstop)
       Gmin otherwise
   }
   ```
-  where `Gmax` > Gmin, `and` `g(i,j)` is the payoff to i in a game against j 
+  where `Gmax > Gmin`, `and` `g(i,j)` is the payoff to i in a game against j 
 - (Note: This just basically describing a game where you can only either win or lose)
 - Selection of individual test strategies represented by a random variable J taking on values j (which is an element of set S) with probability `Ps(j)`
 - True generalization performance of strategy i, `Gi`:
-  <br>![tgp](images/true_generalization_performance.png)<br>
   where `Gi` is the mean of the random variable `Gi(j)`
+  <br>![tgp](images/true_generalization_performance.png)<br>
 
 ## Estimated Generalization Performance
 - In practice, we **estimate** the generalization performance `Gi` through a random sample `Sn` of `n` test strategies which are drawn independently and identically distributed from `S` with probability `Ps`
