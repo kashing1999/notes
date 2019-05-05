@@ -707,11 +707,13 @@ While epoch produces an error
 
 ### Example of a Peceptron
 - A perceptron with two inputs, is to learn the AND function below:
+
   |X1   |X2   |T    |
   |:----|:----|:----|
   |0    |0    |0    |
   |1    |0    |0    |
   |1    |1    |1    |
+
 - Let `a = 0.25` be the learning rate, initial weights and threshold be 0, 0.4 and 0.3 respectively, T the training output and O the actual output, the weights and threshold should be adjusted as below:<br>
 `δwi = a(T-O)Ii ; δθ = - a(T-O)` <br>
  where `Ii` is the input and is always equal to -1 for the threshold
