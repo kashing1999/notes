@@ -712,6 +712,7 @@ While epoch produces an error
   |:----|:----|:----|
   |0    |0    |0    |
   |1    |0    |0    |
+  |0    |1    |0    |
   |1    |1    |1    |
 
 - Let `a = 0.25` be the learning rate, initial weights and threshold be 0, 0.4 and 0.3 respectively, T the training output and O the actual output, the weights and threshold should be adjusted as below:<br>
