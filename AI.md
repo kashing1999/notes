@@ -63,7 +63,7 @@
 - How much it costs to take a particular sequence of actions
 ### State space
 - The initial state and the successor function define the state space which is the set of all states reachable from the initial state
-- Complexity of problem dependant on state space
+- Complexity of problem dependent on state space
 
 ## Example: Romania
 - Initial state: Arad
