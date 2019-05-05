@@ -760,7 +760,7 @@ While epoch produces an error
 
 ## How Machine Learning Works
 ### Training
-- Given a *training set* of labeled examples {`(x1, y1)`, ..., `(xn, yn)`}, the function f is estimated by minimising the prediction error on the training set
+- Given a *training set* of labeled examples `{(x1, y1), ..., (xn, yn)}`, the function f is estimated by minimising the prediction error on the training set
 - Training set may be noisy, e.g. `(x, (f(x) + ε))`
 ### Testing
 - Apply f to a never seen before test example x and output the predicted value `y = f(x)`
