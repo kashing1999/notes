@@ -718,7 +718,8 @@ While epoch produces an error
 - Let `α = 0.25` be the learning rate, initial weights and threshold be 0, 0.4 and 0.3 respectively, `T` the training output and `O` the actual output, the weights and threshold should be adjusted as below:<br>
 1. `δwi = α(T-O)Ii` where `Ii` is the input and is always equal to -1 for the threshold
 2. `δθ = -α(T-O)`
-Where
+
+  Where
 1. `a = Σi(wi * xi)` 
 2. `0 = threshold`
 
