@@ -763,11 +763,11 @@ While epoch produces an error
 - Given a *training set* of labeled examples `{(x1, y1), ..., (xn, yn)}`, the function f is estimated by minimising the prediction error on the training set
 - Training set may be noisy, e.g. `(x, (f(x) + ε))`
 ### Testing
-- Apply f to a never seen before test example x and output the predicted value `y = f(x)`
+- Apply `f` to a never seen before test example `x` and output the predicted value `y = f(x)`
 
 ## Machine Learning Tasks
 ### Supervised
-- Given input samples (`x`) and labeled outputs (`y`) of a function `y = f(x)`, "learn" `f` and evaluate it on new data
+- Given input samples `x` and labeled outputs `y` of a function `y = f(x)`, "learn" `f` and evaluate it on new data
   1. Classification: `y` is discrete (class labels). Learn a decision boundary that seperates one class from another
   2. Regression: `y` is continuous, e.g. linear regression. Learning a continuous input-output mapping, also known as "curve fitting" and "function approximation"
 - Examples:
@@ -788,11 +788,11 @@ While epoch produces an error
 |:----------------------------------------------------|:------------------------|
 |`y = F(x)`: function                                 |`y = ?`: no function     |
 |`D`: labeled training set                            |`D`: unlabeled dataset   |
-|`Learn`: model trained to predict labels of new cases|`Learn`: ?              |
+|`Learn`: model trained to predict labels of new cases|`Learn`: ?               |
 |`Goal`: `E[(F(x)- G(x))^2] = 0`                      |`Goal`: ?                |
 
 ## Classification
-- Learn a method for predicting the isntance class from pre-labeled (classified) instances
+- Learn a method for predicting the instance class from pre-labeled (classified) instances
 - Many approaches:
   1. Nearest Neighbour
   2. Regression
@@ -802,7 +802,7 @@ While epoch produces an error
 
 ### Nearest Neightbour
 ![Nearest Neighbour](./images/nearest_neighbour.png)
-- The test sample `x` will be classified as belonging to the same class as `f(x1)`, i.e. label of the training example nearest to x
+- The test sample `x` will be classified as belonging to the same class as `f(x1)`, i.e. label of the training example nearest to `x`
 - All we need is a distance function for the input
 - No training required
 - Also known as instance-based learning
@@ -845,7 +845,7 @@ else blue
 |:------------------------------------|:-------------------------------------|
 |Reasonable training time             |Simple decision boundaries            |
 |Can handle large number of attributes|Problems with lots of missing data    |
-|Easy to omplement                    |Can't handle complicated relationships|
+|Easy to implement                    |Can't handle complicated relationships|
 |Easy to interpret                    |                                      |
 
 ### Neural Networks
@@ -910,7 +910,9 @@ else blue
   2. The error rates on the different iterations are averaged to yield an overall error rate
 
 ## The v-fold Cross-Validation Method
-- Randomly partition our full dataset into **v disjoint subsets** (each roughly of size n/v, n = total number of training data points)
+- Why just choose one particular 90/10 “split” of the data? 
+- In principle we could do this multiple times
+- Randomly partition our full dataset into **v disjoint subsets** (each roughly of size `n/v`, `n` = total number of training data points)
 ```
 // v = 10
 for i in range(10)
@@ -920,7 +922,7 @@ for i in range(10)
 - Cross-Validation-Accuracy = `1/v * (sum of all Acc(i))`
 - Choose the method with the highest cross-validation accuracy
 - Common values for v are 5 and 10
-- Can also do "leave-one-out" where v = n
+- Can also do "leave-one-out" where `v = n`
 
 ---
 
@@ -932,9 +934,11 @@ for i in range(10)
   1. space `S`: the set of all possible outcome
   2. σ-algrebra `F`: the set of all events `A` (subset of `S`), e.g. power set `2^s`
   3. probabilities `P(A)` assigned to events `A`s
-- Consider an experiment involving a single coin-flip with head (H) and tail (T)
-- S = {H, T}, F = {H, T}, P(H) = P(T) = 0.5 (assuming fair coin) 
-- Note here F ⊂ 2^s = {{}, H, T, {H, T}}
+- Consider an experiment involving a single coin-flip with head `H` and tail `T`
+  1. `S = (H, T)`
+  2. `F = (H, T)` 
+  3. `P(H) = P(T) = 0.5` (assuming fair coin) 
+  4. Note here `F` ⊂ `2^s` = `{{}, H, T, {H, T}}`
 
 ## Disjoint probability
 - Two events are disjoint if they have no outcome in common
