@@ -935,9 +935,9 @@ for i in range(10)
   2. σ-algrebra `F`: the set of all events `A` (subset of `S`), e.g. power set `2^s`
   3. probabilities `P(A)` assigned to events `A`s
 - Consider an experiment involving a single coin-flip with head `H` and tail `T`
-  1. `S = (H, T)`
-  2. `F = (H, T)` 
-  3. `P(H) = P(T) = 0.5` (assuming fair coin) 
+  1. `S` = `(H, T)`
+  2. `F` = `(H, T)` 
+  3. `P(H)` = `P(T)` = `0.5` (assuming fair coin) 
   4. Note here `F` ⊂ `2^s` = `{{}, H, T, {H, T}}`
 
 ## Disjoint probability
