@@ -93,7 +93,7 @@
 ## Search Tree
 - A tree is a graph that:
   1. Is connected but becomes disconnected on removing any edge
-  2. In connected and acyclic
+  2. Is connected and acyclic
   3. Has precisely one path between any two nodes (Unique paths, makes searching easier)
 
 <br>![GraphTree](./images/GraphTree.png)<br>
