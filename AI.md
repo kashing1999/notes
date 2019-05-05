@@ -301,7 +301,7 @@ Search implementation requires two data structures:
     - Large number of potential goals
     #### Goal-Driven Search
     - Starts at the goal and work back torward a start state by seeing what moves could have led to the goal state. AKA backward chaining
-    - Goal can be clearly and easily formulated, example: Finding exit path from a maze
+    - Goal can be clearly and easily formulated, example: Finding exit path from a maze, medical diagnosis
     - Problem data are not given but must be acquired by problem solver
 
 - Both search the same state space and produce same result, however order and actual number of states searched can be different
@@ -620,7 +620,7 @@ function CEA(X, tstop)
 3. All pairs of strategies compete, including the pair where a strategy plays itself (i.e., round-robin tournament)
 4. For `POPSIZE` strategies in a population, every strategy competes a total of `POPSIZE` games
 5. Select the best `POPSIZE/2` strategies based on total payoffs of all games played. Increment generation step, `t = t + 1`
-6. Step 2 to 4 are repeated until termination criterion (i.e., afixed number of generation) is met
+6. Step 2 to 4 are repeated until termination criterion (i.e., affixed number of generation) is met
 
 ## Strategy Representation
 |   |+1 |-1 |
@@ -664,7 +664,7 @@ function CEA(X, tstop)
 - Thus, we can restrict our investigations for each perceptron
 ### What can Perceptrons Represent
 - Only functions which are linearly seperable can by represented by a perceptron
-- The dimensionality of function space is equal to the number of inputs, which wil;l typically be higher than 2!
+- The dimensionality of function space is equal to the number of inputs, which will typically be higher than 2
 - Seperation in this case is by a hyperplane of (dimensionality-1)
 #### Linear Seperability
 - Linear separability is a property of two sets of points
