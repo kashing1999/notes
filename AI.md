@@ -659,6 +659,8 @@ function CEA(X, tstop)
 
 ## Simple Networks
 ![simple networks](images/simple_networks.png)
+- `W` = Weights
+- `t` = Threshold, subtract this from the weighted sum
 
 ## Perceptron
 - In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers
