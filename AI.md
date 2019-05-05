@@ -38,8 +38,8 @@
 - Need to be smart on how to solve these problems
 
 ## Big O notation `O(f(n))`
-- n is a measure of problem size or runtime
-- f(n) is the upper bound of the asymptotic behaviour
+- `n` is a measure of problem size or runtime
+- `f(n)` is the upper bound of the asymptotic behaviour
 
 ---
 
@@ -72,6 +72,7 @@
 - Goal test: Bucharest
 - Solution: Path from Arad to Bucharest
 - Path cost: function of time/distance/risk/petrol/...
+
 <br>![Romania](./images/Romania.png)<br>
 
 ## State Space Representation
@@ -94,6 +95,7 @@
   1. Is connected but becomes disconnected on removing any edge
   2. In connected and acyclic
   3. Has precisely one path between any two nodes (Unique paths, makes searching easier)
+
 <br>![GraphTree](./images/GraphTree.png)<br>
 
 ## Tree terminologies
@@ -233,6 +235,7 @@ Search implementation requires two data structures:
 - Explorers nodes nearest to root before exploring nodes further away
 - Implementation: Fringe is FIFO queue
 - New nodes are inserted at the end of the queue
+
 <br>![BFS](./images/BFS.png)<br>
 ### BFS Observations
 - If there is a solution, BFS is guaranteed to find it
@@ -249,6 +252,7 @@ Search implementation requires two data structures:
 - Explores a path all the way to a leaf before backtracking and exploring another path
 - Implementation: Fringe is a LIFO queue
 - New nodes are inserted at the end of the queue
+
 <br>![DFS](./images/DFS.png)<br>
 ### DFS Observations
 - Only needs to store path from root to the leaf node and unexpanded nodes
@@ -279,6 +283,7 @@ Search implementation requires two data structures:
 - Setting a depth parameter to 19 for DFS is wasteful
 - Iterative Deepening Search remedies this by choosing the depth limit by sequentially trying all depth limits until a solution is found
 - In effect, combining BFS and DFS
+
 <br>![IDS](./images/IDS.png)<br>
 ### IDS Observations
 - May seem wasteful as it is expanding the same nodes many times, but IDS expands just 11% more nodes than BFS or DLS when b=10
@@ -961,9 +966,9 @@ for i in range(10)
 - Bayes’ rule is derived from the product rule:
 - `P(Y|X)=P(X|Y)P(Y)/P(X)`
 - commonly expressed as `P(H/E)` = `P(E/H)P(H) / P(E)` where
-  1. P(H/E) is the probability that hypothesis H is true given evidence E
-  2. P(E/H) is the probability that we will observe E given hypothesis H
-  3. P(H) is the a priori probability that the hypothesis H is true in the absence of any specific evidence.
+  1. `P(H/E)` is the probability that hypothesis `H` is true given evidence `E`
+  2. `P(E/H)` is the probability that we will observe `E` given hypothesis `H`
+  3. `P(H)` is the a priori probability that the hypothesis `H` is true in the absence of any specific evidence.
 - Often useful for diagnosis
 
 
@@ -975,8 +980,9 @@ for i in range(10)
 ## Choosing Hypotheses
 - Generally want the most probable hypothesis given the training data
 - Maximum a posteriori hypothesis Hmap:
+
 ![Choosing Hypothesis](./images/posteriori.png)
-- P(h) = prior probability of hypothesis h
-- P(D) = prior probability of training data D 
-- P(h|D) = probability of h given D
-- P(D|h) = probability of D given h
+- `P(h)` = prior probability of hypothesis `h`
+- `P(D)` = prior probability of training data `D` 
+- `P(h|D)` = probability of `h` given `D`
+- `P(D|h)` = probability of `D` given `h`

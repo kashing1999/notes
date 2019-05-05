@@ -13,7 +13,7 @@
 3. SQL command given, write what will be produced
 
 # Theory Question
-1. CSS -> border
+1. CSS -> borders
 2. JQuery -> functional, event, handler…
-3. HTML -> Tag, command
-4. JScript -> Output will be given, construct the code
+3. HTML -> tag, command
+4. JScript -> 0utput will be given, construct the code
