@@ -557,18 +557,18 @@ function CEA(X, tstop)
   2. perform *rigorous quantitative analysis* in coevolutionary computation
 
 ## Generalization Performance
-- Consider a game and a set S of M pure strategies `S = {1,2,3,...,M}`
-- The game outcome of strategy i against j is given by `Gi(j)`
+- Consider a game and a set `S` of `M` pure strategies `S = {1,2,3,...,M}`
+- The game outcome of strategy `i` against `j` is given by `Gi(j)`
 - Different definitions of `Gi(j)` indicate different quality measures
 - One typical example is **win-lose**:
   ```
   Gw(i,j) = {
-      Gmax for g(i,j) > g(j,i), 
-      Gmin otherwise
-  }
+                Gmax for g(i,j) > g(j,i), 
+                Gmin otherwise
+            }
   ```
-  where `Gmax > Gmin`, `and` `g(i,j)` is the payoff to i in a game against j 
-- (Note: This just basically describing a game where you can only either win or lose)
+  where `Gmax > Gmin`, and `g(i,j)` is the payoff to `i` in a game against `j` 
+- Note: This just basically describing a game where you can only either win or lose
 - Selection of individual test strategies represented by a random variable J taking on values j (which is an element of set S) with probability `Ps(j)`
 - True generalization performance of strategy i, `Gi`:
   where `Gi` is the mean of the random variable `Gi(j)`
@@ -582,15 +582,15 @@ function CEA(X, tstop)
   2. We also cannot calculate the error `|Ĝi - Gi|`
 
 ## How accurate is the Estimate?
-- We make a **statistical claim** as to the **confidence (probability)** with the accuracy (**precision**) of the estimate for a sample size N using **Chebyshev's bounds**
+- We make a **statistical claim** as to the **confidence (probability)** with the accuracy (**precision**) of the estimate for a sample size `N` using **Chebyshev's bounds**
 - From Chebychev's Theorem, we obtain
   <br>![chebyshevs theorem](images/chebyshevs_theorem.png)<br>
-  for any positive ε > 0
+  for any positive `ε > 0`
 - Since random variable `Gi(J)` varies within finite interval [`Gmin`, `Gmax`] of size R, its variance is upperbounded by `(σ^2)max = R^2/4`
 
 ## Chebychev's Theorem (Chebychev's Inequality)
 - In probability theory, Chebyshev's inequality guarantees that for a wide class of probability distributions, no more than a certain fraction of values can be more than a certain distance from the mean
-- Specifically, no more than 1/k^2 of the distribution's values can be more than k standard deviations away from the mean (or equivalently, at least 1 − 1/k^2 of the distribution's values are within k standard deviations of the mean)
+- Specifically, no more than `1/k^2` of the distribution's values can be more than `k` standard deviations away from the mean (or equivalently, at least `1 − 1/k^2` of the distribution's values are within `k` standard deviations of the mean)
 - The inequality has great utility because it can be applied to any probability distribution in which the mean and variance are defined
 
 ## Chebychev's Bound
@@ -609,18 +609,17 @@ function CEA(X, tstop)
   <br>![estimation](images/estimation_by_N.png)<br>
 - There is a trade-off (around N = 2000) between improving estimates and computational cost is roughly the same for most of the strategies
 ### Why estimation stable?
-1. Game outcome is a random variable `Gi(J)` with finite mean and variance.
-2. `Sn` is drawn independently and identically distributed to compute generalization estimates `Ĝ(Sn)` (that takes the sum `Gi(1)`+···+`Gi(N)`).
-iNii
+1. Game outcome is a random variable `Gi(J)` with finite mean and variance
+2. `Sn` is drawn independently and identically distributed to compute generalization estimates `Ĝ(Sn)` (that takes the sum `Gi(1)`+···+`Gi(N)`)
 3. `Ĝi(Sn)` is realization of a random variable
 4. By Central Limit Theorem, `Ĝi(Sn)` is Gaussian-distributed for large enough N
 
 ## Generalization Performance in Coevolutionary Learning
-1. Generation step, t = 1: Initialize POPSIZE/2 parent strategies, `Pi` , i = 1, 2, ..., POPSIZE/2, randomly
-2. Generate POPSIZE/2 offspring, `Oi` , i = 1, 2, ..., POPSIZE/2, from POPSIZE/2 parents using a variation
+1. Generation step, t = 1: Initialize POPSIZE/2 parent strategies, `Pi`, `i = 1, 2, ..., POPSIZE/2` randomly
+2. Generate POPSIZE/2 offspring, `Oi` , `i = 1, 2, ..., POPSIZE/2`, from `POPSIZE/2` parents using a variation
 3. All pairs of strategies compete, including the pair where a strategy plays itself (i.e., round-robin tournament)
-4. For POPSIZE strategies in a population, every strategy competes a total of POPSIZE games
-5. Select the best POPSIZE/2 strategies based on total payoffs of all games played. Increment generation step, t = t + 1
+4. For `POPSIZE` strategies in a population, every strategy competes a total of `POPSIZE` games
+5. Select the best `POPSIZE/2` strategies based on total payoffs of all games played. Increment generation step, `t = t + 1`
 6. Step 2 to 4 are repeated until termination criterion (i.e., afixed number of generation) is met
 
 ## Strategy Representation
