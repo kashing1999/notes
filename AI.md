@@ -399,13 +399,13 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - Selects node to expand believed to be closest, (hence "greedy") to a goal node
 
 ## Greedy Search Observations
-- It finds solution without ever expanding a node that is not on the solution path
+- It finds a solution without ever expanding a node that is not on the solution path
 - Solution path is not optimal
 - It is only concerned with short term gains
 - It is possible to get stuck in an infinite loop unless mechanism for avoiding repeated states is in place
 
 ## Greedy Search Evaluation
-- Not admissible
+- Not admissible (i.e. not accepted)
 - It is not optimal
 - It is not complete
 - Time Complexity: `O(b^m)` where m is the depth of the search tree
@@ -413,8 +413,8 @@ function GraphSearch(problem, fringe) returns a solution or failure
 ## A* Search
 - In greedy search, we kept looking at nodes closer to the goal, but we were accumulating costs as we got further from the initial state
 - Our goal is not to minimize the distance from the current head of our path to the goal, rather to minimize the overall length of the path to the goal
-- Let `g(n)` be the cost of the best path found so far between the initial node and n
-- A*: `f(n) = g(n) + h(n)` where `f(n)` is the estimated total cost of path through n to goal
+- Let `g(n)` be the cost of the best path found so far between the initial node and `n`
+- A*: `f(n) = g(n) + h(n)` where `f(n)` is the estimated total cost of path through `n` to goal
 - Best-known form of best-first search
 - Idea is to avoid expanding paths that are already expensive
 - It is optimal and complete provided `h(n)` is admissible, i.e. `h(n)` never overestimates the cost to reach the goal
@@ -437,7 +437,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - They range from games of entertainment to modelling systems involving strategic decision making
 
 ## Categorization of games through actions (moves)
-1. Two players (Chess) vs Multi-players(Poker)
+1. Two players (Chess) vs Multi-players (Poker)
 2. Deterministic (Chess) vs Non-deterministic (Poker), i.e., element of chance affecting actions
 3. Perfect Informaton (Chess) vs Imperfect Information (Poker), i.e., whether there is knowledge of actions by opponent
 4. Zero-Sum (Chess) vs Nonzero-sum (Prisoner's Dilemma), i.e., gain of one player is balanced by the lost of another player
@@ -625,7 +625,7 @@ iNii
 
 ## Strategy Representation
 |   |+1 |-1 |
-|:--|:--|:--|
+|---|---|---|
 | +1|m11|m12|
 | -1|m21|m22|
 - The direct look-up table representation provides one-to-one mapping (strategy representation and behavior) for deterministic and reactive memory-one PD strategies
