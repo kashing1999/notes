@@ -464,7 +464,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - An alternative **evolutionary** approach
 - More complex/involved evaluation functions
 - Much shallower game-tree search (if any)
-- Board sate evaluation functions (game strategies) have to be **discovered** (learned)
+- Board state evaluation functions (game strategies) have to be **discovered** (learned)
 
 ## Coevolutionary Learning
 - Problem solving becomes a search for the best strategy, **optimizing** representation parameters such as neural connections
@@ -748,7 +748,7 @@ While epoch produces an error
   2. Data in 2013 > all data in history
   3. Powerful, cheaper computers and cloud storage make data accessible
 - Many applications are hard to program directly but most are "pattern recognition" tasks (e.g. targeted advertising, reading handwritting)
-- Machine learning colelct lots of "training data" (examples) that specify the correct output for a given set of inputs
+- Machine learning collect lots of "training data" (examples) that specify the correct output for a given set of inputs
 - A machine learning algorithm then takes these examples and produces a program that does the job (learning from examples)
 
 ## Machine Learning vs Traditional Programming
@@ -959,7 +959,7 @@ for i in range(10)
 - If two events `A` and `B` are not disjoint, then the probability of their union (the event that A or B occurs) is equal to the sum of their probabilities minus the sum of their intersection: `P(A v B) = P(A) + P(B) - P(A^B)`
 
 ## Marginalising
-- `P(B)` = `Σa P(B,a )`
+- `P(B)` = `Σa P(B,a)`
 - `P(B)` = `Σa P(B|A)P(A)` (conditioning)
 
 ## Bayes' Theorem
