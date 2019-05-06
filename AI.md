@@ -300,7 +300,7 @@ Search implementation requires two data structures:
     - All or most of the data given in the initial problem statement
     - Large number of potential goals
     #### Goal-Driven Search
-    - Starts at the goal and work back torward a start state by seeing what moves could have led to the goal state. AKA backward chaining
+    - Starts at the goal and work back torwards a start state by seeing what moves could have led to the goal state. AKA backward chaining
     - Goal can be clearly and easily formulated, example: Finding exit path from a maze, medical diagnosis
     - Problem data are not given but must be acquired by problem solver
 
@@ -459,6 +459,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 - Board state **evaluation functions** are hand-crafted with a deep-ply search for mid-games plus opening and end game databases
 - In two-player sequential games, a ply is one turn taken by one of the players
 - Most board games are considered solved, for example Othello, chess and Go
+- A solved game is a game whose outcome (win, lose or draw) can be correctly predicted from any position, assuming both players play perfectly
 
 ## Game Solutions 2
 - An alternative **evolutionary** approach
@@ -887,8 +888,8 @@ else blue
 - How well does a learned model generalise from the data it was trained on to a new test set?
 - Components of generalisation error
   1. Inherent: meaning unavoidable
-  2. Bias: How much is the average model over all training data
-  3. Variance: How much models estimated from different training sets differ from each other
+  2. Bias: How much the average model over all training sets differ from the true model? High bias makes the model miss relevant data
+  3. Variance: How much models estimated from different training sets differ from each other? High variance causes the algorithm to model the noise
 #### Underfitting
 - Model is too "simple" to represent all the relevant class characteristics
 - High bias and low variance
@@ -947,7 +948,7 @@ for i in range(10)
 
 ## Disjoint probability
 - Two events are disjoint if they have no outcome in common
-- If two events A and B are disjoint, then the probability of either event is the sum of the probabilities of the two events: `P(A ∨ B)` = `P(A)` + `P(B)`
+- If they are joint, `P(A v B)` = `P(A)` + `P(B)` - `P(A^B)`
 - The chance of any (one or more) of two or more events occurring is called the union of the events
 - A single fair coin-flip’s outcome is either `H` or `T`, so `P(H ∨ T)` = `P(H)` + `P(T)` = `1`
 
@@ -956,7 +957,7 @@ for i in range(10)
   1. `P(A ∧ B)` = `P(A)P(B)`
   2. `P(A|B)` = `P(A)`
   3. `P(B|A)` = `P(B)`
-- If two events `A` and `B` are not disjoint, then the probability of their union (the event that A or B occurs) is equal to the sum of their probabilities minus the sum of their intersection: `P(A v B) = P(A) + P(B) - P(A^B)`
+- If two events `A` and `B` are not disjoint, then the probability of their union (the event that A or B occurs) is equal to the sum of their probabilities minus the sum of their intersection: `P(A v B) = P(A) + P(B) - P(A ^ B)`
 
 ## Marginalising
 - `P(B)` = `Σa P(B,a)`
@@ -979,9 +980,9 @@ for i in range(10)
 
 ## Conditional Independence
 - Variables `A` and `B` are conditionally independent given `C` if any of the following hold:
-- `P((A,B)|C)`=`P(A|C)P(B|C)` 
-- `P((A|B),C)`=`P(A|C)`
-- `P((B|A),C)`=`P(B|C)`
+- `P((A,B)|C)` = `P(A|C)P(B|C)`
+- `P((A|B),C)` = `P(A|C)`
+- `P((B|A),C)` = `P(B|C)`
  
 ## Bayes' Rule
 - Bayes’ rule is derived from the product rule:
