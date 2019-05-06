@@ -634,7 +634,6 @@ function CEA(X, tstop)
 We have to:
   1. Have an appropriate number of games, `N`
   2. Have a proper game setup, i.e. proper number of choices
-<br>
 to get a proper coevolutionary learning framework
 
 ---
