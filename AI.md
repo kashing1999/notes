@@ -631,10 +631,11 @@ function CEA(X, tstop)
 - `Mfm` used to represent the first move directly when there is no prior history played yet
 
 ## TLDR
-- We have to:
+We have to:
   1. Have an appropriate number of games, `N`
   2. Have a proper game setup, i.e. proper number of choices
-- to get a proper coevolutionary learning framework
+<br>
+to get a proper coevolutionary learning framework
 
 ---
 
