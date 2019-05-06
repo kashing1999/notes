@@ -989,19 +989,19 @@ for i in range(10)
 - commonly expressed as `P(H/E)` = `P(E/H)P(H) / P(E)` where
   1. `P(H/E)` is the probability that hypothesis `H` is true given evidence `E`
   2. `P(E/H)` is the probability that we will observe `E` given hypothesis `H`
-  3. `P(H)` is the a priori probability that the hypothesis `H` is true in the absence of any specific evidence.
+  3. `P(H)` is the a prior probability that the hypothesis `H` is true in the absence of any specific evidence.
 - Often useful for diagnosis
 
 ![Bayes' Rule](./images/bayes_rule.png)
 - Red: Priori probability
 - Black: Conditional probability
-- Green: Posteriori probability
+- Green: Posterior probability
 ### Bayer's Rule general form
 ![General](./images/Bayes_General.png)
 
 ## Choosing Hypotheses
 - Generally want the most probable hypothesis given the training data
-- Maximum a posteriori hypothesis Hmap:
+- Maximum of a posterior hypothesis Hmap:
 
 ![Choosing Hypothesis](./images/posteriori.png)
 - `P(h)` = prior probability of hypothesis `h`
