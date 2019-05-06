@@ -1,4 +1,4 @@
-# What's Complete
+ What's Complete
 - [x] Introduction
 - [x] Problem Formulation
 - [x] Blind Search
@@ -212,25 +212,17 @@ Search implementation requires two data structures:
 - have been processed
 - aka closed nodes
 - process implies the completion of:
-  1. tested whether they are a goal
+  1. testing whether they are a goal node
   2. all children have been discovered
    
 ## Fundamental algorithm:
 1. Move nodes into "fringe" when they are discovered
 2. Pick a node from the fringe to be processed in a predetermined order
 3. Into the "explored" after they have been processed
-- Processing method to compare current node with a goal state and "expand a node" to discover its children when goal state not reached
-
-## Examples of blind searches:
-1. Breadth-first search
-2. Depth-first search
-3. Depth-limited search
-4. Iterative Deepening search
-5. Uniform-cost search
 
 ## Breadth-First Strategy
 - Explorers nodes nearest to root before exploring nodes further away
-- Implementation: Fringe is FIFO queue
+- Implementation: Fringe is first in first out (FIFO) queue
 - New nodes are inserted at the end of the queue
 
 <br>![BFS](./images/BFS.png)<br>
@@ -283,7 +275,7 @@ Search implementation requires two data structures:
 
 <br>![IDS](./images/IDS.png)<br>
 ### IDS Observations
-- May seem wasteful as it is expanding the same nodes many times, but IDS expands just 11% more nodes than BFS or DLS when b=10
+- May seem wasteful as it is expanding the same nodes many times, but IDS expands just 11% more nodes than BFS or DLS when `b=10`
 - For large search spaces, where the depth of the solution is not known, IDS is normally the preferred search method
 ### IDS Evaluation
 - It is complete
@@ -296,20 +288,20 @@ Search implementation requires two data structures:
     #### Data-Driven Search
     - Starts from an initial state and uses actions that are allowed to move forward until a goal is reached. AKA forward chaining
     - Goal is not clear or hard to formulate precisely
+    - Many possible goals
     - All or most of the data given in the initial problem statement
-    - Large number of potential goals
     #### Goal-Driven Search
     - Starts at the goal and work back torwards a start state by seeing what moves could have led to the goal state. AKA backward chaining
     - Goal can be clearly and easily formulated, example: Finding exit path from a maze, medical diagnosis
-    - Problem data are not given but must be acquired by problem solver
+    - Problem data are not given but must be acquired by algorithm
 
 - Both search the same state space and produce same result, however order and actual number of states searched can be different
 
 ## Uniform Cost Search
-- BFS will find the optimal (shallowest) solution provided all step costs are equal
+- Breadth-first search will find the optimal (shallowest) solution provided all step costs are equal
 - For other cases, Uniform Cost Search (a variant of Dijkstra's Algorithm for graph search) can be used to find the cheapest solution provided that the path cost grows monotonically (i.e. never decreases as one proceeds along the path)
 - Instead of expanding the shallowest node, Uniform Cost Search works by expanding the node n with the lowest path cost on the fringe
-- Similar to BFS except that it sorts the nodes in the fringe according to the cost of the node, where cost is the path cost, `g(n)`
+- Similar to BFS except that it sorts the nodes in the fringe according to the path cost from the start node to current node, `g(n)`
 - Expands nodes until the queue's cheapest node is a goal node
 
 ## Tree Search Algorithm
@@ -946,10 +938,12 @@ for i in range(10)
   4. Note here `F` ⊂ `2^s` = `{{}, H, T, {H, T}}`
 
 ## Disjoint probability
-- Two events are disjoint if they have no outcome in common
-- If they are joint, `P(A v B)` = `P(A)` + `P(B)` - `P(A^B)`
+- Two events are disjoint if they have no outcome in common: `P(A v B) = P(A) + P(B)`
+- Events `A` and `B` are disjoint. Events `A` and `B` cannot both occur at the same time, so there is no overlapping:<br>
+![Disjoint](./images/disjoint.png)
 - The chance of any (one or more) of two or more events occurring is called the union of the events
 - A single fair coin-flip’s outcome is either `H` or `T`, so `P(H ∨ T)` = `P(H)` + `P(T)` = `1`
+- If two probabilities are joint however, `P(A v B)` = `P(A)` + `P(B)` - `P(A^B)`
 
 ## Probability Independence
 - If two events `A` and `B` are independent, then the probability of both events happening is the product of the probabilities for each event: 
@@ -959,18 +953,20 @@ for i in range(10)
 - If two events `A` and `B` are not disjoint, then the probability of their union (the event that A or B occurs) is equal to the sum of their probabilities minus the sum of their intersection: `P(A v B) = P(A) + P(B) - P(A ^ B)`
 
 ## Marginalising
-- `P(B)` = `Σa P(B,a)`
+- `P(B)` = `Σa P(B,A)`
 - `P(B)` = `Σa P(B|A)P(A)` (conditioning)
 
 ## Bayes' Theorem
-- Product Rule: `p(X,Y)` = `p(Y|X)p(X)`
+- Product Rule: `P(X,Y)` = `P(Y|X)P(X)`
 - Together with the symmetry property `P(X,Y)` = `P(Y,X)`, the relationship between conditional probabilities can be derived, known as Bayes' theorem:
-- `p(Y|X)` = `P(X|Y)p(Y) / p(X)`
+- `P(Y|X)P(X)` = `P(X|Y)P(Y)`
 - Using the sum rule, the denominator can be expressed in terms of the quantities appearing in the numerator:
-- `p(X)` = `Σy p(X|Y)p(Y)`
+- `P(X)` = `Σy P(X|Y)P(Y)` (see marginalising)
 
 ## Prior Probability
-- Degree of belief without any evidence
+- Degree of belief without any evidence, for example:
+  1. Just `P(X)`
+  2. Or just `P(Y)`
 
 ## Joint Probability
 - Matrix of combined probabilities of a set of variables
@@ -982,20 +978,18 @@ for i in range(10)
 - `P((A,B)|C)` = `P(A|C)P(B|C)`
 - `P((A|B),C)` = `P(A|C)`
 - `P((B|A),C)` = `P(B|C)`
+- Note: Conditional Independence does not imply Probability Independence
  
 ## Bayes' Rule
 - Bayes’ rule is derived from the product rule:
 - `P(Y|X)` = `P(X|Y)P(Y)/P(X)`
 - commonly expressed as `P(H/E)` = `P(E/H)P(H) / P(E)` where
-  1. `P(H/E)` is the probability that hypothesis `H` is true given evidence `E`
-  2. `P(E/H)` is the probability that we will observe `E` given hypothesis `H`
+  1. `P(H/E)` is the probability that `H` is true given evidence `E`
+  2. `P(E/H)` is the probability that we will observe `E` given `H`
   3. `P(H)` is the a prior probability that the hypothesis `H` is true in the absence of any specific evidence.
-- Often useful for diagnosis
-
+- This rule is often useful for diagnosis
+- Example of bayes' rule for medical diagnosis:<br>
 ![Bayes' Rule](./images/bayes_rule.png)
-- Red: Priori probability
-- Black: Conditional probability
-- Green: Posterior probability
 ### Bayer's Rule general form
 ![General](./images/Bayes_General.png)
 
