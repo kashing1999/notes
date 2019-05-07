@@ -430,7 +430,7 @@ function GraphSearch(problem, fringe) returns a solution or failure
 ## Categorization of games through actions (moves)
 1. Two players (Chess) vs Multi-players (Poker)
 2. Deterministic (Chess) vs Non-deterministic (Poker), i.e., element of chance affecting actions
-3. Perfect Informaton (Chess) vs Imperfect Information (Poker), i.e., whether there is knowledge of actions by opponent
+3. Perfect Informaton (Chess) vs Imperfect Information (Poker), i.e., whether there is knowledge of actions by opponents
 4. Zero-Sum (Chess) vs Nonzero-sum (Prisoner's Dilemma), i.e., gain of one player is balanced by the lost of another player
 
 ## Coevolutionary systems
@@ -713,12 +713,10 @@ While epoch produces an error
   |1    |1    |1    |
 
 - Let `α = 0.25` be the learning rate, initial weights and threshold be 0, 0.4 and 0.3 respectively, `T` the training output and `O` the actual output, the weights and threshold should be adjusted as below:<br>
-1. `δwi = α(T-O)Ii` where `Ii` is the input and is always equal to -1 for the threshold
+1. `δwi = α(T-O)Ii` where `Ii` is the input
 2. `δθ = -α(T-O)`
 
-Where
-1. `a = Σi(wi * xi)` 
-2. `0 = threshold`
+Where `θ = threshold`
 
 ## Building a Neural Network
 - There are many forms of neural networks 
