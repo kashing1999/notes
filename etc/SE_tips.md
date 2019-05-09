@@ -25,7 +25,7 @@ generic vs customised products
 * Advantage of UML
 * why ppl started using UML
 * Types of UML 
-* Name system on top right use case diagram **
+* Name system on top right use case diagram
 * Include and extend , generalization ( arrow towards parent)
 
 ## Week 6 and 7
