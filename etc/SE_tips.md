@@ -38,7 +38,7 @@ generic vs customised products
 ## Week 8 and 9
 * Details about waterfall and spiral model
 * Advantages and disadvantages of traditional approach
-* Why people moved from traditional to agile ( 7 reasons)
+* Why people moved from traditional to agile (7 reasons)
 * Ignore scrum
 
 ## Week 10 and 11
