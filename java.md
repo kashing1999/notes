@@ -1,29 +1,27 @@
 # Java
 
----
-
 ## Objects
 - Objects are essentially reusable software components
 - Contains methods and attributes
 
 ## Methods
+Function parameters:
 - Primitive types are passed by value
 - Objects are passed by reference
 
 ## toString()
-- By default, calls the `object` to string method, which shows the type of object and its memory location
+- By default, calls the `Object`'s `toString()` method, which shows the type of object and its memory location
 - Can be overrided to display more information
 - If an object is referred by only its name such as: `System.out.println(SomeObject)` , it will invoke the `toString()` method
 
-
 ## `this` keyword
 - `this` refers to the object itself
-    1. `this` can be used to refer current class instance variable.
+    1. `this` can be used to refer current class instance variable
     2. `this` can be used to invoke current class method (implicitly)
-    3. `this()` can be used to invoke current class constructor.
-    4. `this` can be passed as an argument in the method call.
-    5. `this` can be passed as argument in the constructor call.
-    6. `this` can be used to return the current class instance from the method.
+    3. `this()` can be used to invoke current class constructor
+    4. `this` can be passed as an argument in a method call
+    5. `this` can be passed as argument in a constructor call
+    6. `this` can be used to return the current class instance from the method
 ---
 ## Casting
 - Say we have an object of type animal, and an object of type dog that inherits from animal:
@@ -39,11 +37,11 @@ animal1.bark();         // Not Valid!
 Dog dog2 = (Dog) animal1;
 ```
 #### Downcasting
-- Casting an object to be a subclass
+- Casting an object into a subclass
 #### Upcasting
-- Casting an object to be a superclass
+- Casting an object into a superclass
 
-## instanceof
+## `instanceof`
 - Used to check if an object is an instance of a class
 ```java
 if (myObject instanceof Circle) {
@@ -56,25 +54,26 @@ if (myObject instanceof Circle) {
 - If there is any private, final or static method in a class, there is static binding
 
 ## Dynamic Binding
-- When type of the object is determined at run-time, it is known as dynamic binding. Example:
+- When type of the object is determined at run-time, it is known as dynamic binding:
 ```java
 class Animal{  
-    void eat(){System.out.println("animal is eating...");}  
+    void eat(){
+        System.out.println("animal is eating...");
+    }
 }  
   
 class Dog extends Animal{  
-    void eat(){System.out.println("dog is eating...");}  
+    void eat(){
+        System.out.println("dog is eating...");
+    }
   
 public static void main(String args[]){  
-    Animal a=new Dog();  
-    a.eat();  
-    }  
+    Animal a=new Dog();
+    a.eat();
 }  
 ```
-- output: `dog is eating...`
-  
+- output: `dog is eating...` 
 ---
-
 ## Polymorphism
 - Polymorphism is the capability of a method to do different things based on the object that it is acting upon
 - Polymorphism allows you define one interface and have multiple implementations
@@ -107,10 +106,8 @@ public static void main(String args[]){
 5. A method can be overloaded in the same class or in a subclass
 
 ## Overriding
-- Overriding allows users to change the functionality of a super class method
-  
+- Overriding allows users to change the functionality of a super class method  
 ---
-
 ## Arrays
 - Arrays can be declared as such
 ```java
@@ -141,9 +138,7 @@ for (int column = 0; column < a[1].length; column++)
     a[1][column] = 0;
 
 ```
-
 ---
-
 ## Static
 - Static means there is only one copy of the variable in memory shared by all instances of the class
 - The static member can be accessed before the class object is created
@@ -172,7 +167,6 @@ for (int column = 0; column < a[1].length; column++)
 
 ## Final
 - The final keyword just means the value can't be changed. Without final, any object can change the value of the variable
-
 ---
 ## Constructors
 - Constructors are called when objects are created with the `new` keyword
@@ -193,10 +187,8 @@ class Program1 {
 - Constructor of an object can be referenced by itself using `this()`
 - Constructor of superclass can be referenced by using `super()`
 - Super class constructors must always be called first
-- If no super class constructor is invoked explicitly, the compiler puts super() as the first statement in the subclass constructor.
-  
+- If no super class constructor is invoked explicitly, the compiler puts super() as the first statement in the subclass constructor
 ---
-
 ## Java Access Modifiers
 #### Public
 - A variable, method or class that is public means that any class can access it
@@ -209,9 +201,7 @@ class Program1 {
     1. the class itself to access them
     2. classes inside of the same package to access them
     3. and subclasses of that class to access them
-
 ---
-
 ## Abstract Classes
 - Abstract classes are not meant to be instantiated
 - Can only be extended
@@ -278,9 +268,7 @@ class Dog extends Animal implements IndoorPet {
 }
 ```
 - An interface can extend many other interfaces
-
 ---
-
 ## Strings
 - Strings are basically objects that represent sequence of char values
 - An array of characters works the same as Java String
@@ -402,9 +390,7 @@ System.out.println(sb); //prints HJavalo
 - Each method can be accessed by one thread at a time
 - Thus, StringBuilder is faster than the StringBuffer when calling the same methods of each class
 - However, StringBuilder is not thread safe
-
 ---
-
 ## Annotations
 ### @Override
 - Assures that subclass method is overriding parent class method
@@ -414,9 +400,7 @@ System.out.println(sb); //prints HJavalo
 
 ### @Deprecated
 - Used to warn users that the method is deprecated, and may be removed in future versions
-
 ---
-
 ## Error
 - Something severe has happened
 - Program should crash instead of handling the error
@@ -489,9 +473,7 @@ public class ThrowExample {
     }
 }
 ```
-
 ---
-
 ## File Handling
 ### File Class
 - The `File` class abstracts most of the file handling for the programmer
@@ -584,14 +566,4 @@ public class CreateFileDemo {
 ### `flush()`
 - `flush()` flushes the output stream and forces any buffered output bytes to be written out
 - The general contract of flush is that calling it is an indication that, if any bytes previously written have been buffered by the implementation of the output stream, such bytes should immediately be written to their intended destination.
-
 ---
-
-## Garbage Collection
-### Stack
-- Method invocations and local variables live here
-- Reference to objects live here
-
-### Heap
-- All objects live here, not the reference to the variables
-- Instance variables of objects live here too
