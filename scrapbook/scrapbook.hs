@@ -412,3 +412,8 @@ show_answer_list (x:xs) = do
                                         return ()
                                 else
                                         show_answer_list xs
+
+palindrome :: [Char] -> Bool
+palindrome xs = xs == reverse xs
+
+sub_palindromes xs = nub $ foldr (\x xs -> if palindrome x && (length x) > 1 then x : xs else xs) [] (subsequences xs)

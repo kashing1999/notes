@@ -22,7 +22,9 @@ Function parameters:
     4. `this` can be passed as an argument in a method call
     5. `this` can be passed as argument in a constructor call
     6. `this` can be used to return the current class instance from the method
+
 ---
+
 ## Casting
 - Say we have an object of type animal, and an object of type dog that inherits from animal:
 ```java
@@ -72,8 +74,10 @@ public static void main(String args[]){
     a.eat();
 }  
 ```
-- output: `dog is eating...` 
+- output: `dog is eating...`
+
 ---
+
 ## Polymorphism
 - Polymorphism is the capability of a method to do different things based on the object that it is acting upon
 - Polymorphism allows you define one interface and have multiple implementations
@@ -89,8 +93,8 @@ public static void main(String args[]){
 - An object of a subclass can also be treated as an object of the super class
 
 ## Composition
-- Fufills a has-a relationship
-- In a has-a relationship, an object contains references to other objects
+- Fufills a `has-a` relationship
+- In a `has-a` relationship, an object contains references to other objects
 - For example, a Kitchen object has a Sink object
 
 ## Encapsulation
@@ -107,7 +111,10 @@ public static void main(String args[]){
 
 ## Overriding
 - Overriding allows users to change the functionality of a super class method  
+- Must retain same argument list, return type and access modifiers
+
 ---
+
 ## Arrays
 - Arrays can be declared as such
 ```java
@@ -138,10 +145,12 @@ for (int column = 0; column < a[1].length; column++)
     a[1][column] = 0;
 
 ```
+
 ---
+
 ## Static
 - Static means there is only one copy of the variable in memory shared by all instances of the class
-- The static member can be accessed before the class object is created
+- The static member can be accessed even before the class object is created
 
 ### Static Variables
 - Variables are independent of object creation
@@ -151,10 +160,9 @@ for (int column = 0; column < a[1].length; column++)
 ### Static Methods
 - Static methods are class methods rather than object methods
 - Can be used without creating an object
-- Cannot use non static instance variables or methods
+- Cannot use non static instance variables or methods from the same class
 - Cannot be overriden, it only hides the method, hence polymorphism does not occur
 - Can be overloaded
-- Calling a non-static function inside a static function is not allowed
 - Use it:
     1. If you are writing utility classes and they are not supposed to be changed.
     2. If the method is not using any instance variable.
@@ -167,7 +175,9 @@ for (int column = 0; column < a[1].length; column++)
 
 ## Final
 - The final keyword just means the value can't be changed. Without final, any object can change the value of the variable
+
 ---
+
 ## Constructors
 - Constructors are called when objects are created with the `new` keyword
 - By default, an empty constructor is used
@@ -187,22 +197,34 @@ class Program1 {
 - Constructor of an object can be referenced by itself using `this()`
 - Constructor of superclass can be referenced by using `super()`
 - Super class constructors must always be called first
-- If no super class constructor is invoked explicitly, the compiler puts super() as the first statement in the subclass constructor
+- If no super class constructor is invoked explicitly, the compiler puts `super()` as the first statement in the subclass constructor
+
 ---
+
 ## Java Access Modifiers
 #### Public
 - A variable, method or class that is public means that any class can access it
-- If you have a file called Program1.java, the only class in that file that can be public is `Program1`
+- If you have a file called Program1.java, then the only class in that file that can be public is `Program1`
 #### Private
-- Private variables are only accessible inside the class they were defined
+- Private variables are only accessible by the class they were defined in
 - Inner classes can access its variables too
 #### Protected
-- Protected variables and methods allow:
-    1. the class itself to access them
-    2. classes inside of the same package to access them
-    3. and subclasses of that class to access them
+- Protected variables and methods allow access to:
+    1. the class which it is defined in
+    2. classes inside of the same package
+    3. and subclasses of that class
+
+|Access Modifier|within class|within package|outside package by subclass|outside package|
+|:--|:--|:--|:--|:--|
+|Private|Yes|No|No|No|
+|Default|Yes|Yes|No|No|
+|Protected|Yes|Yes|Yes|No|
+|Public|Yes|Yes|Yes|Yes|
+
 ---
+
 ## Abstract Classes
+- An abstract class means the class must be extended
 - Abstract classes are not meant to be instantiated
 - Can only be extended
 ```java
@@ -217,10 +239,9 @@ public class MakeAnimal() {
 ```
 
 ## Abstract Methods
-- An abstract class means the class must be extended
 - An abstract method means the method must be overridden
 ```java
-// an abstract method, must be implemented
+// an abstract method must be implemented
 public abstract void eat();
 ```
 - A class must be abstract to have abstract methods
@@ -230,7 +251,7 @@ public abstract void eat();
 - Interfaces are like contracts
 - Interfaces cannot be instantiated
 - Interface methods must be declared public when implemented
-- Interface methods can be overloaded, but should not be
+- Interface methods can be overloaded, but should not be since it is a contract
 - Classes can implement multiple interfaces
 - Classes from different inheritance trees can implement the same interface
 - To implement an interface:
@@ -268,7 +289,9 @@ class Dog extends Animal implements IndoorPet {
 }
 ```
 - An interface can extend many other interfaces
+
 ---
+
 ## Strings
 - Strings are basically objects that represent sequence of char values
 - An array of characters works the same as Java String
@@ -297,6 +320,7 @@ String s = "welcome";
 ``` Java
 String s1 = "welcome";
 String s2 = "welcome"; // does not create new instance
+System.out.println(s1 == s2) // true
 ```
 
 ### Java String Compare
@@ -305,15 +329,15 @@ String s2 = "welcome"; // does not create new instance
   2. `==` operator
   3. `compareTo()` method
 #### `equals()` method
-- The `String equals() method compares the original content of the string
+- The String `equals()` method compares the original content of the string
 ``` Java
 String s1="Sachin";
 String s2="Sachin";
 String s3=new String("Sachin");
 String s4="Saurav";
-System.out.println(s1.equals(s2)); // True
-System.out.println(s1.equals(s3)); // True
-System.out.println(s1.equals(s4)); // False
+System.out.println(s1.equals(s2)); // true
+System.out.println(s1.equals(s3)); // true
+System.out.println(s1.equals(s4)); // false
 
 ```
 #### `==` operator
@@ -350,7 +374,7 @@ System.out.println(s.substring(0,6)); // output is: Sachin
 ```
 
 ## `valueOf()` method
-- The string valueOf() method coverts given type such as int, long, float, double, boolean, char and char array into string
+- The string valueOf() method coverts a given type such as int, long, float, double, boolean, char and char array into a string
 ``` Java
 int a = 10;
 System.out.println(String.valueOf(a)); // 10
@@ -381,26 +405,30 @@ System.out.println(sb); //prints HJavalo
 ```
 
 ## `StringBuilder` class
-- Java StringBuilder class is used to create mutable (modifiable) string
-- The Java StringBuilder class is same as StringBuffer class except that it is non- synchronized
+- The Java `StringBuilder` class is used to create mutable (modifiable) strings
+- The Java `StringBuilder` class is same as `StringBuffer` class except that it is non-synchronized
 - It is available since JDK 1.5
 - It allows multi-threading, a technique by which a single set of code can be used by several processors at different stages of execution
 ### Comparison between StringBuffer and StringBuilder
-- Each method in StringBuffer is synchronized, it does not allow two threads to simultaneously access the same method
+- Each method in `StringBuffer` is synchronized, it does not allow two threads to simultaneously access the same method
 - Each method can be accessed by one thread at a time
 - Thus, StringBuilder is faster than the StringBuffer when calling the same methods of each class
 - However, StringBuilder is not thread safe
+
 ---
+
 ## Annotations
 ### @Override
-- Assures that subclass method is overriding parent class method
+- Assures that a subclass method is overriding the parent class method
 
 ### @SupressWarnings
 - Used to suppress warnings during compilation
 
 ### @Deprecated
 - Used to warn users that the method is deprecated, and may be removed in future versions
+
 ---
+
 ## Error
 - Something severe has happened
 - Program should crash instead of handling the error
@@ -416,14 +444,14 @@ System.out.println(sb); //prints HJavalo
 #### Checked exceptions
 - All exceptions other than RuntimeExceptions are known as Checked exceptions, as the compiler checks whether the programmer has handled them or not
 - If these exceptions are not handled/declared in the program, you will get compilation error
-- Some examples: IOException, ClassNotFoundException etc
+- Some examples: `IOException`, `ClassNotFoundException` etc
 #### Unchecked exceptions
 - Runtime exceptions are also known as unchecked exceptions
 - These exceptions are not checked at compile-time
 - Hence, compiler does not check whether it was handled
 - Responsibilty of programmer to handle these exceptions
 ### Try
-- Try block contains set of statements wher an exception can occur
+- Try block contains set of statements where an exception can occur
 - A try block is always followed by a catch block, which handles the exceptions
 - Must be followed by a catch or finally or both
 ### Catch
@@ -449,6 +477,10 @@ class Example1 {
             // generic exception
             System.out.println("Exception occurred");
         }
+        
+        finally {
+            System.out.println("This is part of the finally block");
+        }
         System.out.println("I'm out of try-catch block in Java."); 
     }
 }
@@ -458,7 +490,7 @@ class Example1 {
 - A finally block must be associated with a try block
 - Finally blocks are optional
 - Statements in finally block execute even if the try block contains control transfer statements such a return, break or continue
-### Throwing exceptions
+### `Throw exception`
 - Exceptions can be thrown explicitly with the keyword `throw`
 ``` Java
 public class ThrowExample {
@@ -473,7 +505,9 @@ public class ThrowExample {
     }
 }
 ```
+
 ---
+
 ## File Handling
 ### File Class
 - The `File` class abstracts most of the file handling for the programmer
@@ -525,14 +559,14 @@ public class ReadData {
 - This method creates a file and returns true if the file does not exist, false otherwise
 - It throws:
   1. `IOException`: If an input or output error occurs during file creation
-  2. `SecurityException`: If a security manager exists and its SecurityManager.checkWrite(java.lang.String) method denies write access to this file
+  2. `SecurityException`: If a security manager exists and its `SecurityManager.checkWrite(java.lang.String)` method denies write access to this file
 ``` Java
 import java.io.File;
 import java.io.IOException;
 public class CreateFileDemo {
     public static void main( String[] args ) {
         try {
-            File file = new File("C:\\Users\\TOSHIBA\\eclipse-workspace\\newfile.txt");
+            File file = new File("/Users/ks/notes.txt");
             boolean fvar = file.createNewFile(); 
             if (fvar) {
                 System.out.println("File has been created successfully"); 
@@ -552,18 +586,20 @@ public class CreateFileDemo {
 - `printStackTrace()` is a method on Exception instances that prints the stack trace of the instance to `System.err`
 - It's a very simple, but very useful tool for diagnosing an exceptions
 - It tells you what happened and where in the code this happened
-
 ### `BufferedInputStream`
 - `FileInputStream` reads from the file, while `BufferedInputStream` will read from a buffer of the file
-- In practice, this means that every call to FileInputStream.read() will perform a syscall (expensive)
-- Whereas most calls to BufferedInputStream.read() will return data from the buffer
-- In short, if you are doing "small" reads, putting a BufferedInputStream into your stream stack will improve performance.
-
+- In practice, this means that every call to `FileInputStream.read()` will perform a syscall (expensive)
+- Whereas most calls to `BufferedInputStream.read()` will return data from the buffer
+- In short, if you are doing "small" reads, putting a `BufferedInputStream` into your stream stack will improve performance.
+### `BufferedInputStream` vs `BufferedReader`
+- BufferedInputStream reads the data in the buffer as bytes by using InputStream
+- BufferedReader reads the text but not as bytes and BufferedReader is efficient reading of characters,arrays and lines.
 ### `FileOutputStream`
 - We can use `FileOutputStream` to write to a file in java
 - We use the `write()` method to write the content to the specified file
-
+- Signature of `write()` method: `public void write(byte[] b) throws IOException`
 ### `flush()`
 - `flush()` flushes the output stream and forces any buffered output bytes to be written out
 - The general contract of flush is that calling it is an indication that, if any bytes previously written have been buffered by the implementation of the output stream, such bytes should immediately be written to their intended destination.
+
 ---
