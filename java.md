@@ -214,12 +214,12 @@ class Program1 {
     2. classes inside of the same package
     3. and subclasses of that class
 
-|Access Modifier|within class|within package|outside package by subclass|outside package|
-|:--|:--|:--|:--|:--|
-|Private|Yes|No|No|No|
-|Default|Yes|Yes|No|No|
-|Protected|Yes|Yes|Yes|No|
-|Public|Yes|Yes|Yes|Yes|
+|Access Modifier|within class|within package|subclass (same package)|subclass (diff package)|outside class|
+|:--|:--|:--|:--|:--|:--|
+|Private|Yes|No|No|No|No|
+|Default|Yes|Yes|Yes|No|No|
+|Protected|Yes|Yes|Yes|Yes|No|
+|Public|Yes|Yes|Yes|Yes|Yes|
 
 ---
 
