@@ -16,4 +16,4 @@
 1. CSS -> borders
 2. JQuery -> functional, event, handler…
 3. HTML -> tag, command
-4. JScript -> 0utput will be given, construct the code
+4. JScript -> Output will be given, construct the code
